@@ -12,7 +12,7 @@ export default class HomeHeader extends Component {
             <i className="iconfont icon-guanbi"/>
           </div>
         </div>
-        <ul>
+        <ul className="menu-list">
           <li>Node课程培训</li>
           <li>HTML培训课程</li>
           <li>视频课程</li>
