@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
+import './index.less'
 import {NavLink} from 'react-router-dom';
 export default class Tab extends Component {
   render() {
     return (
       <nav className="tabs">
-        <NavLink to="/">
+        <NavLink exact to="/">
           <i className="iconfont icon-xingqiu"></i>
           <span>首页</span>
         </NavLink>
