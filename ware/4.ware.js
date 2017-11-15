@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
+import {createStore,applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 let initState = {
   loading:'',//加载状态，默认为空，开始加载时变成加载中。加载完成后变成空
   data:'',//实际后台返回的数据，默认为空，加载完成后或者显示加载成功，或者显示加载失败
@@ -21,10 +23,21 @@ let reducer = (state=initState,action)=>{
        return state;
    }
 }
-let store = createStore(reducer);
+let store = createStore(reducer,applyMiddleware(thunk,logger));
 class Panel extends React.Component{
   constructor(){
     super();
+    this.state = {};
+  }
+  componentDidMount(){
+    store.subscribe(()=>{
+      this.setState({});
+    })
+  }
+  handleClick = ()=>{
+    store.dispatch(function(){
+      store.dispatch({type:FETCH_START})
+    });
   }
   render(){
     let {loading,data,error} = store.getState();
@@ -33,7 +46,7 @@ class Panel extends React.Component{
         <p>
           {loading} {data} {error}
         </p>
-        <button>加载数据</button>
+        <button onClick={this.handleClick}>加载数据</button>
       </div>
     )
   }
