@@ -35,8 +35,16 @@ class Panel extends React.Component{
     })
   }
   handleClick = ()=>{
+    //派发一个函数，是为了让函数执行
     store.dispatch(function(){
-      store.dispatch({type:FETCH_START})
+      store.dispatch({type:FETCH_START});//loading
+      setTimeout(function(){
+        if(Math.random()>.5){
+           store.dispatch({type:FETCH_SUCCESS,payload:'成功'})
+        }else{
+          store.dispatch({type:FETCH_ERROR,payload:'失败'})
+        }
+      },3000);
     });
   }
   render(){
