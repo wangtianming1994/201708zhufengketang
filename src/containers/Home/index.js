@@ -4,6 +4,7 @@ import HomeHeader from "./HomeHeader/index";
 import {connect} from 'react-redux';
 import actions from '../../store/actions/home';
 import Slider from "./Slider/index";
+import LessonList from "./LessonList/index";
 class Home extends Component {
   componentDidMount(){
     if(this.props.sliders.length==0)
@@ -17,6 +18,7 @@ class Home extends Component {
           lesson={this.props.lesson}/>
         <div className="main-content">
           <Slider sliders={this.props.sliders}/>
+          <LessonList/>
         </div>
       </div>
     )

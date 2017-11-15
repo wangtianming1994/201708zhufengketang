@@ -17,8 +17,13 @@ app.use(function(req,res,next){
     next();
   }
 });
-//当客户端以get方式访问/sliders请求的时候，会由此路由进行响应
+app.listen(3000);
+//获取轮播图
 app.get('/sliders',function(req,res){
   res.json(sliders);
 });
-app.listen(3000);
+let lessons = require('./mock/lessons');
+//获取课程列表
+app.get('/lessons',function(req,res){
+  res.json(lessons);
+});
