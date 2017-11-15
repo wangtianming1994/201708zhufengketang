@@ -3,3 +3,7 @@ import {get} from './index';
 export function fetchSliders(){
   return get('/sliders');
 }
+//向后台请求课程列表的数据
+export function fetchLessons(){
+  return get('/lessons');
+}

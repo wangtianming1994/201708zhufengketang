@@ -1,5 +1,5 @@
 import * as types from '../action-types';
-import {fetchSliders} from '../../api/home';
+import {fetchSliders,fetchLessons} from '../../api/home';
 export default {
   setLesson(id){
     return {
@@ -17,6 +17,24 @@ export default {
           payload:{sliders}
         });
       });
+    }
+  },
+  //获取后台数据
+  getLessons(){
+    return (dispatch,getState)=>{
+      //派发一个action,把状态改为加载中....
+      dispatch({
+        type:types.FETCH_LESSONS
+      });
+      //派发一个对象，这个对象的payload是一个方法调用的返回值，这个返回值是一个promise,会等待promise完成，完成后会自动再次派发action.这个action的payload值会成为promise的resolve的值
+      dispatch({
+        type:types.FETCH_LESSONS_FINISH,
+        payload:fetchLessons()
+      });
+     /* dispatch({
+        type:types.FETCH_LESSONS_FINISH,
+        payload:{"hasMore":true,"list":[]}
+      })*/
     }
   }
 }

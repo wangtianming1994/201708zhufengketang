@@ -2,3 +2,8 @@
 export const SET_LESSON = 'SET_LESSON';
 //获取轮播图数据
 export const FETCH_SLIDERS = 'FETCH_SLIDERS';
+
+//开始获取课程列表
+export const FETCH_LESSONS = 'FETCH_LESSONS';
+//获取课程列表结束
+export const FETCH_LESSONS_FINISH = 'FETCH_LESSONS_FINISH';
