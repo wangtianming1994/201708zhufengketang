@@ -6,7 +6,7 @@ import actions from '../../store/actions/home';
 import Slider from "./Slider/index";
 class Home extends Component {
   componentDidMount(){
-
+    this.props.getSliders();
   }
   render() {
     return (
@@ -15,7 +15,7 @@ class Home extends Component {
           setLesson={this.props.setLesson}
           lesson={this.props.lesson}/>
         <div className="main-content">
-          <Slider/>
+          <Slider sliders={this.props.sliders}/>
         </div>
       </div>
     )
@@ -23,6 +23,6 @@ class Home extends Component {
 }
 //actions是action的创建器
 export default connect(
-  state => state.home,//{lesson:0}
+  state => state.home,//{lesson:0,sliders:[]}
   actions
 )(Home)

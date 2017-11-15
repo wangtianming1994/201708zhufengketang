@@ -9,7 +9,13 @@ export default function(state=initState,action){
   switch (action.type){//判断动作的类型
     case types.SET_LESSON:
       return {
+        ...state,
         lesson:action.payload.id
+      }
+    case types.FETCH_SLIDERS:
+      return {
+        ...state,
+        sliders:action.payload.sliders
       }
     default:
       return state;

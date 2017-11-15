@@ -7,11 +7,17 @@ export default class Slider extends Component {
     }
     return (
       <div className="carousel-wrapper">
-        <ReactSwipe className="carousel" swipeOptions={swipeOptions}>
-          <div>panel1</div>
-          <div>panel2</div>
-          <div>panel3</div>
-        </ReactSwipe>
+        {
+          this.props.sliders.length>0?<ReactSwipe className="carousel" swipeOptions={swipeOptions}>
+        {
+          this.props.sliders.map((item,index)=>(
+          <div key={index}>
+          <img src={item}/>
+          </div>
+          ))
+        }
+          </ReactSwipe>:null
+        }
       </div>
     )
   }

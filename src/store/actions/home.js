@@ -13,7 +13,7 @@ export default {
     return dispatch=>{
       fetchSliders().then(sliders=>{
         dispatch({
-          type:'',
+          type:types.FETCH_SLIDERS,
           payload:{sliders}
         });
       });
