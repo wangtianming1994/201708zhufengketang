@@ -1,0 +1,41 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {createStore} from 'redux';
+let initState = {
+  loading:'',//加载状态，默认为空，开始加载时变成加载中。加载完成后变成空
+  data:'',//实际后台返回的数据，默认为空，加载完成后或者显示加载成功，或者显示加载失败
+  error:''
+};
+const FETCH_START = 'FETCH_START';//开始加载,如果派发这个动作，会把loading=加载中... data=''
+const FETCH_SUCCESS = 'FETCH_SUCCESS';//加载成功,如果派发这个动作，会把loading='',data=真实的值
+const FETCH_ERROR = 'FETCH_ERROR';//加载失败,如果派发这个动作，会把loading='',data=失败的原因
+let reducer = (state=initState,action)=>{
+   switch (action.type){
+     case FETCH_START:
+       return {loading:'加载中...',data:''};
+     case FETCH_SUCCESS:
+       return {loading:'',error:'',data:action.payload};
+     case FETCH_ERROR:
+       return {loading:'',data:'',error:action.payload};
+     default:
+       return state;
+   }
+}
+let store = createStore(reducer);
+class Panel extends React.Component{
+  constructor(){
+    super();
+  }
+  render(){
+    let {loading,data,error} = store.getState();
+    return (
+      <div>
+        <p>
+          {loading} {data} {error}
+        </p>
+        <button>加载数据</button>
+      </div>
+    )
+  }
+}
+ReactDOM.render(<Panel/>,document.querySelector('#root'));
