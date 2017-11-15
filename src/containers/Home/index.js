@@ -5,6 +5,9 @@ import {connect} from 'react-redux';
 import actions from '../../store/actions/home';
 import Slider from "./Slider/index";
 class Home extends Component {
+  componentDidMount(){
+
+  }
   render() {
     return (
       <div className="home">
