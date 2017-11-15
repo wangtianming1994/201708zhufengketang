@@ -3,7 +3,11 @@ import ReactSwipe from 'react-swipe';
 export default class Slider extends Component {
   render() {
     let swipeOptions = {
-      continuous:true
+      continuous:true,
+      auto:600,
+      callback(index){
+        console.log(index);
+      }
     }
     return (
       <div className="carousel-wrapper">
@@ -12,7 +16,7 @@ export default class Slider extends Component {
         {
           this.props.sliders.map((item,index)=>(
           <div key={index}>
-          <img src={item}/>
+            <img src={item}/>
           </div>
           ))
         }

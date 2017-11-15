@@ -6,7 +6,8 @@ import actions from '../../store/actions/home';
 import Slider from "./Slider/index";
 class Home extends Component {
   componentDidMount(){
-    this.props.getSliders();
+    if(this.props.sliders.length==0)
+       this.props.getSliders();
   }
   render() {
     return (
