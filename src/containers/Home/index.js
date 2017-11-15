@@ -20,7 +20,7 @@ class Home extends Component {
           lesson={this.props.lesson}/>
         <div className="main-content">
           <Slider sliders={this.props.sliders}/>
-          <Lessons/>
+          <Lessons lessons={this.props.lessons}/>
         </div>
       </div>
     )
@@ -28,6 +28,6 @@ class Home extends Component {
 }
 //actions是action的创建器
 export default connect(
-  state => state.home,//{lesson:0,sliders:[]}
+  state => state.home,//{lesson:0,sliders:[],lessons}
   actions
 )(Home)

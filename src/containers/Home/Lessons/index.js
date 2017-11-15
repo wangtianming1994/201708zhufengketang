@@ -9,7 +9,13 @@ export default class Lessons extends Component {
           <span>全部课程</span>
         </div>
         {
-
+          this.props.lessons.list.map((item,index)=>(
+            <div className="lesson" key={index}>
+              <img src={item.url}/>
+              <p>{item.title}</p>
+              <p className="price">{item.price}</p>
+            </div>
+          ))
         }
       </div>
     )
