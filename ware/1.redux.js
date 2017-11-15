@@ -1,5 +1,6 @@
 //import {createStore} from 'redux';
 let redux = require('redux');
+
 let initState = {number:0};
 let reducer = (state=initState,action)=>{
   switch (action.type){
