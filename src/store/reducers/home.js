@@ -43,8 +43,7 @@ export default function (state = initState, action) {
           //课程列表是不停的累加的
           list: [...state.lessons.list, ...action.payload.list],
           //偏移量当前偏移量加上返回的条数
-          offset: state.lessons.offset + action.payload.list.length,
-          limit: action.payload.offset
+          offset: state.lessons.offset + action.payload.list.length
         }
       }
     default:

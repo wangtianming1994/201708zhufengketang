@@ -28,6 +28,7 @@ let lessons = require('./mock/lessons');
 // http://localhost:3000/lessons?offset=0&limit=5
 // http://localhost:3000/lessons?offset=5&limit=5
 // http://localhost:3000/lessons?offset=10&limit=5
+//不能无限加载，比如说现在规定一共只有三页数据
 app.get('/lessons',function(req,res){
   //深度克隆
   let cloneLessons = JSON.parse(JSON.stringify(lessons));
@@ -36,6 +37,9 @@ app.get('/lessons',function(req,res){
   for(let i=0;i<cloneLessons.list.length;i++){
     let lesson = cloneLessons.list[i];
     lesson.title = `${+offset+i+1}-${lesson.title}`;
+  }
+  if(offset==10){
+    cloneLessons.hasMore = false;
   }
   res.json(cloneLessons);
 });
