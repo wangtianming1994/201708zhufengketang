@@ -4,6 +4,6 @@ export function fetchSliders(){
   return get('/sliders');
 }
 //向后台请求课程列表的数据
-export function fetchLessons(){
-  return get('/lessons');
+export function fetchLessons(offset,limit){
+  return get(`/lessons?offset=${offset}&limit=${limit}`);
 }

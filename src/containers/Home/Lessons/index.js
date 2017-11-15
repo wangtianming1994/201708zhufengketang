@@ -17,6 +17,13 @@ export default class Lessons extends Component {
             </div>
           ))
         }
+        <div
+          onClick={this.props.getLessons}
+          className="load-status">
+          {
+              this.props.lessons.hasMore?"加载更多":"我是有底线的!"
+          }
+        </div>
       </div>
     )
   }

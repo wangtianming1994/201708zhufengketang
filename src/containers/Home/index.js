@@ -20,7 +20,9 @@ class Home extends Component {
           lesson={this.props.lesson}/>
         <div className="main-content">
           <Slider sliders={this.props.sliders}/>
-          <Lessons lessons={this.props.lessons}/>
+          <Lessons
+            getLessons = {this.props.getLessons}
+            lessons = {this.props.lessons}/>
         </div>
       </div>
     )

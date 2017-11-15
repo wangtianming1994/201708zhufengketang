@@ -23,7 +23,19 @@ app.get('/sliders',function(req,res){
   res.json(sliders);
 });
 let lessons = require('./mock/lessons');
-//获取课程列表
+//获取课程列表 查询字符串
+//此接口可以再接收二个参数 offset(偏移量) limit(每页的条数)
+// http://localhost:3000/lessons?offset=0&limit=5
+// http://localhost:3000/lessons?offset=5&limit=5
+// http://localhost:3000/lessons?offset=10&limit=5
 app.get('/lessons',function(req,res){
-  res.json(lessons);
+  //深度克隆
+  let cloneLessons = JSON.parse(JSON.stringify(lessons));
+  //取得查询字符串对象参数 offset 偏移量,limit 限定每页的条数
+  let {offset=0,limit=5} = req.query;
+  for(let i=0;i<cloneLessons.list.length;i++){
+    let lesson = cloneLessons.list[i];
+    lesson.title = `${+offset+i+1}-${lesson.title}`;
+  }
+  res.json(cloneLessons);
 });
