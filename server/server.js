@@ -79,3 +79,11 @@ app.post('/login',function(req,res){
      res.json({code:1,error:'用户名或密码错误!'});
    }
 });
+//当应用初始化的时候，会向后台发送一个请求，询问当前用户是否登录，如果登录的话则返回登录的用户并存放在仓库里。
+app.get('/validate',function(req,res){
+  if(req.session.user){//如果会话对象中有user的话，表示已登录
+    res.json({code:0,user:req.session.user});
+  }else{
+    res.json({code:1});
+  }
+});

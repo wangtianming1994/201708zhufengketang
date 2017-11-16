@@ -12,3 +12,5 @@ export const FETCH_LESSONS_REFRESH = 'FETCH_LESSONS_REFRESH';
 export const SIGN_UP = 'SIGN_UP';
 //登录
 export const LOGIN = 'LOGIN';
+//验证用户是否登录
+export const VALIDATE = 'VALIDATE';

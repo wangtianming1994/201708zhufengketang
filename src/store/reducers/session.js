@@ -22,6 +22,13 @@ export default function (state = initState, action) {
         error,
         user
       }
+    case types.VALIDATE:
+      let {code,user} = action.payload;
+      if(code==0){
+        return {...state,user}
+      }else{
+        return state;
+      }
     default:
       return state;
   }

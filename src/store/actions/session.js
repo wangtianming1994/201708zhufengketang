@@ -1,5 +1,5 @@
 import * as types from '../action-types';
-import {signUp,login} from '../../api/session';
+import {signUp,login,validate} from '../../api/session';
 import {push} from 'react-router-redux';
 export default {
   signUp(data){
@@ -27,6 +27,17 @@ export default {
         //当code为0的时候表示登录成功，则跳转到个人中心页
         if(code == 0)
           dispatch(push('/profile'));
+      });
+    }
+  },
+  validate(){
+    return dispatch=>{
+      validate().then(payload=>{
+        console.log(payload);
+        dispatch({
+          type:types.VALIDATE,
+          payload
+        })
       });
     }
   }

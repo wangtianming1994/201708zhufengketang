@@ -1,4 +1,4 @@
-import {post} from './index';
+import {get,post} from './index';
 //注册
 export function signUp(data){
    return post('/signup',data);
@@ -6,4 +6,8 @@ export function signUp(data){
 //登录
 export function login(data){
    return post('/login',data);
+}
+
+export function validate(){
+   return get('/validate');
 }
