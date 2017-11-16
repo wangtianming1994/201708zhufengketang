@@ -10,6 +10,7 @@ import Courses from "../Courses/index";
 import Profile from "../Profile/index";
 import Tab from "../../components/Tab/index";
 import Login from "../Login/index";
+import SignUp from "../SignUp/index";
 export default class App extends Component {
   render() {
     return (
@@ -19,6 +20,7 @@ export default class App extends Component {
           <Route path="/courses" component={Courses}/>
           <Route path="/profile" component={Profile}/>
           <Route path="/login" component={Login}/>
+          <Route path="/signup" component={SignUp}/>
           <Tab/>
         </div>
       </Router>
