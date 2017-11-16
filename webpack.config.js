@@ -7,6 +7,9 @@ module.exports = {
     path: path.resolve('build'),//输出的目录
     filename: 'bundle.js',//输出的文件名
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   //配置模块
   module: {
     //很多的模块加载规则
@@ -31,8 +34,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html'
-    }),
-    new webpack.LoaderOptionsPlugin({
-      options: {historyApiFallback:true}})
+    })
   ]
 }
