@@ -13,7 +13,7 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div style={{height:'100%'}}>
           <Route exact path="/" component={Home}/>
           <Route path="/courses" component={Courses}/>
           <Route path="/profile" component={Profile}/>
