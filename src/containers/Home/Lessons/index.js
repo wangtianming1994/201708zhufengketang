@@ -10,7 +10,7 @@ export default class Lessons extends Component {
           <span>全部课程</span>
         </div>
         {
-          this.props.lessons.list.map((item,index)=>(
+          this.props.lessons.list.map((item, index) => (
             <div className="lesson" key={index}>
               <img src={item.url}/>
               <p>{item.title}</p>
@@ -19,13 +19,10 @@ export default class Lessons extends Component {
           ))
         }
         {
-          this.props.lessons.loading?
-            <Loading/>:<div
-            onClick={this.props.getLessons}
+          this.props.lessons.loading ?
+            <Loading/> : this.props.lessons.hasMore ? null : <div
             className="load-status">
-            {
-              this.props.lessons.hasMore?"加载更多":"我是有底线的!"
-            }
+            后面已经没有了
           </div>
         }
       </div>
