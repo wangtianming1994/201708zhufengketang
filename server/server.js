@@ -41,5 +41,7 @@ app.get('/lessons',function(req,res){
   if(offset==10){
     cloneLessons.hasMore = false;
   }
-  res.json(cloneLessons);
+  setTimeout(function(){
+    res.json(cloneLessons);
+  },1000);
 });
