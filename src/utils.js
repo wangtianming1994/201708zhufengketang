@@ -45,9 +45,12 @@ export function downRefresh(element,callback){
             element.style.top = initTop+'px';
             clearInterval(timerId);//清除定时器
           }else{//让top值减1
-            element.style.top = element.offsetTop - 6 +'px';
+            element.style.top = element.offsetTop - 1 +'px';
           }
-        },13)
+        },1);
+        if(distance>50){
+          callback();
+        }
       }
    }
 }

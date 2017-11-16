@@ -40,5 +40,21 @@ export default {
         payload:{"hasMore":true,"list":[]}
       })*/
     }
+  },
+  refresh(){
+    return (dispatch,getState)=>{
+      let {loading,hasMore,offset,limit} = getState().home.lessons;
+      //只有当目前不是加载中，并且的确有更多数据的话才会加载新的一页数据
+      if(!loading){
+        //派发一个action,把状态改为加载中....
+        dispatch({
+          type:types.FETCH_LESSONS
+        });
+        dispatch({
+          type:types.FETCH_LESSONS_REFRESH,
+          payload:fetchLessons(0,limit)
+        });
+      }
+    }
   }
 }
