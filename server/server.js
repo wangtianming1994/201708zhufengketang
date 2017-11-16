@@ -1,6 +1,9 @@
 let express = require('express');
+let bodyParser = require('body-parser');
 let app = express();
+app.use(bodyParser.json());
 let sliders = require('./mock/slider');
+let users = [];
 app.use(function(req,res,next){
   //允许的来源
   res.header('Access-Control-Allow-Origin','http://localhost:8080');
@@ -44,4 +47,21 @@ app.get('/lessons',function(req,res){
   setTimeout(function(){
     res.json(cloneLessons);
   },1000);
+});
+//注册接口
+app.get('/signup',function(req,res){
+  let user = req.body;
+  let oldUser = users.find(item=>item.username == user.username);
+  //后台错误有两种，一种系统错误，另一种叫业务错误 code=0表示成功，1表示失败
+  if(oldUser){//如果有值意味着此用户名已经被人占用
+     res.json({code:1,error:'用户名已经被占用!'});
+  }else{
+    users.push(user);
+    res.json({code:0,success:'用户注册成功!'});
+    //如果注册成功了，客户端要跳到登录页进行登录
+  }
+});
+
+app.get('/login',function(req,res){
+
 });
