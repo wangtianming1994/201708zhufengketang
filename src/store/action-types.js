@@ -10,3 +10,5 @@ export const FETCH_LESSONS_FINISH = 'FETCH_LESSONS_FINISH';
 export const FETCH_LESSONS_REFRESH = 'FETCH_LESSONS_REFRESH';
 //注册
 export const SIGN_UP = 'SIGN_UP';
+//登录
+export const LOGIN = 'LOGIN';

@@ -9,7 +9,7 @@ import Profile from "../Profile/index";
 import Tab from "../../components/Tab/index";
 import Login from "../Login/index";
 import SignUp from "../SignUp/index";
-import createHistory from 'history/createBrowserHistory';
+import createHistory from 'history/createHashHistory';
 const history = createHistory();//用来管理路由历史的
 //连接后的路由容器，连接的是路由容器和仓库(store)
 import {ConnectedRouter} from 'react-router-redux';

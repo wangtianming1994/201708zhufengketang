@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import reducer from './reducers';
 import {routerMiddleware} from 'react-router-redux';
-import createHistory from 'history/createBrowserHistory';
+import createHistory from 'history/createHashHistory';
 const history = createHistory();//用来管理路由历史的
 let router = routerMiddleware(history);
 let store = createStore(reducer,applyMiddleware(thunk,promise,router,logger));

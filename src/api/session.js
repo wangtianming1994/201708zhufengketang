@@ -3,3 +3,7 @@ import {post} from './index';
 export function signUp(data){
    return post('/signup',data);
 }
+//登录
+export function login(data){
+   return post('/login',data);
+}

@@ -31,7 +31,7 @@ UI组件、傻瓜组件、木偶组件
 还有一个`index.less`文件
 
 ## 如何使用redux
-1. 后台写一个后台接口  /lessons
+1. 后台写一个后台接口  /login
 2. 前台(api)里写一个获取接口数据的方法
 3. 在action-types里添加新的actionType类型
 4. 在reducer里修改初始状态，并添加一个case
