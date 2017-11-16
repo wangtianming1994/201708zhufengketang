@@ -37,7 +37,17 @@ export function downRefresh(element,callback){
         }
       }
       function touchEnd(e){
-
+        element.removeEventListener('touchmove',touchMove);
+        element.removeEventListener('touchend',touchEnd);
+        let timerId = setInterval(function(){
+          //如果说当前的距离已经小于等于初始的值了
+          if(element.offsetTop<=initTop){
+            element.style.top = initTop+'px';
+            clearInterval(timerId);//清除定时器
+          }else{//让top值减1
+            element.style.top = element.offsetTop - 6 +'px';
+          }
+        },13)
       }
    }
 }
