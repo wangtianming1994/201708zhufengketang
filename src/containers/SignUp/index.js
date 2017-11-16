@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import NavBar from "../../components/NavBar/index";
 import actions from '../../store/actions/session';
 import {connect} from 'react-redux';
+import Message from "../../components/Message/index";
 class SignUp extends Component {
   signUp = ()=>{
     let username = this.username.value;
@@ -25,12 +26,7 @@ class SignUp extends Component {
         <div
           onClick={this.signUp}
           className="signup-button">注&nbsp;册</div>
-        {
-          this.props.error&&<div className="error-info">{this.props.error}</div>
-        }
-        {
-          this.props.success&&<div className="success-info">{this.props.success}</div>
-        }
+        <Message {...this.props}/>
       </div>
     )
   }
