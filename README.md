@@ -36,6 +36,7 @@ UI组件、傻瓜组件、木偶组件
 3. 在action-types里添加新的actionType类型
 4. 在reducer里修改初始状态，并添加一个case
 5. 在`actions`里添加一个方法调用此方法
+6. 在组件中调用action中的方法
 
 
 

@@ -1,4 +1,5 @@
 let path = require('path');
+let webpack = require('webpack');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/index.js',//入口文件
@@ -30,6 +31,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html'
-    })
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {historyApiFallback:true}})
   ]
 }

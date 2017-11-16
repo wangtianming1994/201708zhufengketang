@@ -1,7 +1,13 @@
 let express = require('express');
 let bodyParser = require('body-parser');
+let session = require('express-session');
 let app = express();
 app.use(bodyParser.json());
+app.use(session({
+  resave:true,//每次访问都重新保存session
+  saveUninitialized:true,//保存未初始化的session
+  secret:'zfpx'//密钥
+}));
 let sliders = require('./mock/slider');
 let users = [];
 app.use(function(req,res,next){
@@ -12,7 +18,7 @@ app.use(function(req,res,next){
   //允许客户端发送的请求头
   res.header('Access-Control-Allow-Headers','Content-Type');
   //允许客户端发送Cookie
-  res.header('Access-Control-Allow-Credential',"true");
+  res.header('Access-Control-Allow-Credentials',"true");
   //当客户端发向服务器发post跨域的时候，会先发送OPTIONS请求。如果服务器返回的响应头Access-Control-Allow-Methods里有POST的话，才会再次发送POST请求
   if(req.method == 'OPTIONS'){
     res.end();
@@ -49,7 +55,7 @@ app.get('/lessons',function(req,res){
   },1000);
 });
 //注册接口
-app.get('/signup',function(req,res){
+app.post('/signup',function(req,res){
   let user = req.body;
   let oldUser = users.find(item=>item.username == user.username);
   //后台错误有两种，一种系统错误，另一种叫业务错误 code=0表示成功，1表示失败
@@ -61,7 +67,15 @@ app.get('/signup',function(req,res){
     //如果注册成功了，客户端要跳到登录页进行登录
   }
 });
-
-app.get('/login',function(req,res){
-
+//登录
+app.post('/login',function(req,res){
+   let user = req.body;//得到请求体
+   //在注册过的用户数组中找一找有没有对应的用户
+   let oldUser = users.find(item=>item.username == user.username&& item.password == user.password);
+   if(oldUser){//如果有的话表示登录成功
+     req.session.user = user;//把登录成功的对象写入session
+     res.json({code:0,success:'恭喜你，登录成功!',user});
+   }else{//如果没有则表示登录失败
+     res.json({code:1,error:'用户名或密码错误!'});
+   }
 });

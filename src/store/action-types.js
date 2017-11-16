@@ -8,3 +8,5 @@ export const FETCH_LESSONS = 'FETCH_LESSONS';
 export const FETCH_LESSONS_FINISH = 'FETCH_LESSONS_FINISH';
 //刷新课程列表
 export const FETCH_LESSONS_REFRESH = 'FETCH_LESSONS_REFRESH';
+//注册
+export const SIGN_UP = 'SIGN_UP';
